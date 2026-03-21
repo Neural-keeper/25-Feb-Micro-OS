@@ -14,7 +14,13 @@ class Kernel:
         self.slots = [None] * 32
         self.pid_counter = 1
         self.logs = ["💻 System Booted..."]
-        self.fs = {"notes.txt": "Study OS today", "config.sys": "BOOT_PRIORITY=HIGH"}
+        self.fs = {"root": {
+                        "bin" : {"echo": "SYSTEM_BINARY"},
+                        "home" : {
+                            "user" : {"notes.txt": "Study OS today", "todo.txt": "Explore Simulator\nFind Dorothy"}
+                        },
+                        "tmp": {}
+                    }}
 
     def spawn(self, name, burst_time):
         for i in range(len(self.slots)):
